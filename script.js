@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const table = document.getElementById('promise-table');
-    const loadingRow = document.getElementById('loading-row');
+    const tableBody = document.getElementById('output');
+    const loadingRow = document.getElementById('loading');
 
     // Function to create a promise that resolves after a random time between 1 and 3 seconds
     const createRandomPromise = () => {
@@ -26,18 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add rows for each promise result
         results.forEach((result, index) => {
-            const row = table.insertRow();
-            const cell1 = row.insertCell(0);
-            const cell2 = row.insertCell(1);
+            const row = document.createElement('tr');
+            const cell1 = document.createElement('td');
+            const cell2 = document.createElement('td');
             cell1.textContent = `Promise ${index + 1}`;
-            cell2.textContent = result;
+            cell2.textContent = `${result} seconds`;
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            tableBody.appendChild(row);
         });
 
         // Add the total row
-        const totalRow = table.insertRow();
-        const totalCell1 = totalRow.insertCell(0);
-        const totalCell2 = totalRow.insertCell(1);
+        const totalRow = document.createElement('tr');
+        const totalCell1 = document.createElement('td');
+        const totalCell2 = document.createElement('td');
         totalCell1.textContent = 'Total';
-        totalCell2.textContent = total;
+        totalCell2.textContent = `${total} seconds`;
+        totalRow.appendChild(totalCell1);
+        totalRow.appendChild(totalCell2);
+        tableBody.appendChild(totalRow);
     });
 });
