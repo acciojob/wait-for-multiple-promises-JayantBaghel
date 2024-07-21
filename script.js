@@ -45,5 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         totalRow.appendChild(totalCell1);
         totalRow.appendChild(totalCell2);
         tableBody.appendChild(totalRow);
+    }).catch(error => {
+        console.error("An error occurred while resolving the promises: ", error);
     });
 });
